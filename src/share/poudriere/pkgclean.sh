@@ -274,6 +274,7 @@ for file in ${PACKAGES}/All/*; do
 	case ${file} in
 	*.${PKG_EXT})
 		if should_delete "${file}"; then
+			[ -L "${file}" ] && echo "$(realpath ${file})" >> "${BADFILES_LIST}"
 			echo "${file}" >> "${BADFILES_LIST}"
 		fi
 		;;
@@ -339,6 +340,7 @@ END {
 	for pkg in $packages; do
 		pkgversion="${pkg##*-}"
 		pkgversion="${pkgversion%.*}"
+		pkgversion="${pkgversion%~*}"
 
 		if [ -z "${lastpkg}" ]; then
 			lastpkg="${pkg}"
