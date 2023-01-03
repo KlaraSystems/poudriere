@@ -26,6 +26,7 @@
 # SUCH DAMAGE.
 
 . ${SCRIPTPREFIX}/common.sh
+. ${SCRIPTPREFIX}/image_distset.sh
 . ${SCRIPTPREFIX}/image_dump.sh
 . ${SCRIPTPREFIX}/image_firmware.sh
 . ${SCRIPTPREFIX}/image_hybridiso.sh
@@ -46,7 +47,7 @@ Parameters:
     -j jail         -- Jail
     -t type         -- Type of image can be one of
                     -- hybridiso, iso, iso+mfs, iso+zmfs, usb, usb+mfs, usb+zmfs,
-                       rawdisk, zrawdisk, tar, firmware, rawfirmware,
+                       rawdisk, zrawdisk, distset, tar, firmware, rawfirmware,
                        dump, zfs+[raw|gpt|send[+full[+be]]], zsnapshot
 
 Options:
@@ -355,7 +356,7 @@ while getopts "A:bB:c:f:h:i:j:m:n:o:p:P:R:s:S:t:vw:X:z:" FLAG; do
 			MEDIATYPE=${OPTARG}
 			case ${MEDIATYPE} in
 			hybridiso|iso|iso+mfs|iso+zmfs|usb|usb+mfs|usb+zmfs) ;;
-			rawdisk|zrawdisk|tar|firmware|rawfirmware) ;;
+			rawdisk|zrawdisk|distset|tar|firmware|rawfirmware) ;;
 			dump|zsnapshot) ;;
 			zfs|zfs+gpt|zfs+raw) ;;
 			zfs+send|zfs+send+full|zfs+send+be|zfs+send+full+be) ;;
